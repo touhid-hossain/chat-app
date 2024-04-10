@@ -5,9 +5,9 @@ import messageRoutes from "./routers/message.route.js";
 import userRoutes from "./routers/user.route.js";
 import cookieParser from "cookie-parser";
 import connectDB from "./connection/connectionDB.js";
+import { app, server } from "./socket/socket.js";
 
 env.config();
-const app = express();
 const PORT = process.env.PORT || 6000;
 
 /* Set Middle wares  */
@@ -21,6 +21,6 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
